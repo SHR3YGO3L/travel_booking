@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block content %}
+<form method="get" class="mb-3">
+
+  <select name="source" onchange="this.form.submit()" class="form-control mb-2">
+    <option value="">All Sources</option>
+    {% for src in sources %}
+      <option value="{{ src }}" {% if filters.source == src %}selected{% endif %}>{{ src }}</option>
+    {% endfor %}
+  </select>
+
+  <select name="destination" class="form-control mb-2">
+    <option value="">All Destinations</option>
+    {% for dest in destinations %}
+      <option value="{{ dest }}" {% if filters.destination == dest %}selected{% endif %}>{{ dest }}</option>
+    {% endfor %}
+  </select>
+
+  <select name="type" class="form-control mb-2">
+    <option value="">All Types</option>
+    {% for t in types %}
+      <option value="{{ t }}" {% if filters.type == t %}selected{% endif %}>{{ t }}</option>
+    {% endfor %}
+  </select>
+
+  <select name="date" class="form-control mb-2">
+    <option value="">All Dates</option>
+    {% for d in dates %}
+      <option value="{{ d }}" {% if filters.date == d|stringformat:"Y-m-d" %}selected{% endif %}>{{ d }}</option>
+    {% endfor %}
+  </select>
+
+  <button type="submit" class="btn btn-primary">Filter</button>
+</form>
+
+<h2 class="mb-4">Available Travel Options</h2>
+<div class="row">
+  {% for option in options %}
+    <div class="col-md-6 mb-4">
+      <div class="card">
+        <div class="card-body">
+          <h6 class="card-title"> <h3> {{ option.source }} → {{ option.destination }} </h3>   <h5>      {{ option.type }}</h5></h6>
+          <p class="card-text">
+            Date & Time: {{ option.datetime }}<br>
+            Price: ₹{{ option.price }}<br>
+            Available Seats: {{ option.available_seats }}
+          </p>
+          <a href="{% url 'book_travel' option.id %}" class="btn btn-success">Book Now</a>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}

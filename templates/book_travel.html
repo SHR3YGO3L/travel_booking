@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card mx-auto" style="max-width: 500px;">
+  <div class="card-body">
+    <h4 class="card-title mb-3">Book Your Trip</h4>
+    <h6>{{ travel_option.type }} | {{ travel_option.source }} → {{ travel_option.destination }}</h6>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn btn-primary mt-3">Confirm Booking</button>
+    </form>
+    <a href="{% url 'travel_options' %}" class="btn btn-link mt-2">Back to options</a>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+  /* NOTE: This styling is consistent with the login and register pages.
+     For best practice, this CSS should be moved to a shared stylesheet 
+     linked in your base.html file to avoid repetition.
+  */
+
+  /* Sets the background and centers the container */
+  body {
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+
+  /* The main container for the logout message */
+  .logout-container {
+    background-color: #ffffff;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+  }
+
+  /* Styling for the main heading */
+  .logout-container h2 {
+    margin-bottom: 1rem;
+    color: #333;
+    font-weight: 600;
+  }
+  
+  /* Styling for the confirmation message */
+  .logout-container p {
+    color: #555;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+  }
+
+  /* Style the login link as a prominent button */
+  .logout-container .login-button {
+    display: inline-block;
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+</style>
+
+<div class="logout-container">
+  <h2>Logged Out Successfully</h2>
+  <p>Thank you for visiting. We hope to see you again soon!</p>
+  <a href="{% url 'travel_options' %}" class="btn btn-primary login-button">Log In Again</a>
+</div>
+
+{% endblock %}
