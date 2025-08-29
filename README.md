@@ -28,7 +28,7 @@ If using Git:
 
 ```
 
-git clone https://github.com/your-username/travel_booking.git
+git clone https://github.com/SHR3YGO3L/travel_booking.git
 cd travel_booking
 
 ```
